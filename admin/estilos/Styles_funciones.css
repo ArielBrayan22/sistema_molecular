@@ -1,0 +1,563 @@
+
+
+table#planes_globales{
+
+	width: 90%;
+	text-align: center;
+}
+
+table#planes_globales tr#titulo{
+	background: blue;
+	color: white;
+}
+
+table#planes_globales tr#subtitulo{
+	background: white;
+	color: black;
+}
+
+
+table#tabla_Identificacion{
+
+	background:#BDBDBD;
+	width:90%;
+}
+
+table#tabla_Identificacion td{
+
+	padding: .5%;	
+	background: white;
+}
+
+table#tabla_Materias{
+
+    background:#BDBDBD;
+	width:90%;
+	text-align: center;
+}
+
+table#tabla_Materias td{
+
+    padding: .5%;	
+	background: white;
+}
+
+.id_materia{
+	text-align: center;
+	border-style: none;
+
+}
+.input_invi{
+	visibility: hidden;
+}
+
+table#tabla_PG{
+
+	width: 100%;
+}
+table#tabla_PG td {
+	padding: .5%;
+
+}
+.tabla_user{
+	background: red;
+}
+
+.tabla_lista_docentes{
+	background: #BDBDBD;
+	width: 100%;
+	padding: 1%;
+}
+
+.tabla_lista_pg
+{ background: #BDBDBD;
+	
+	width: 50%;
+}
+
+.tabla_lista_pg td{
+	padding: 0.6%;
+	background: white;
+	font-size: 13px;
+	
+}
+
+.tabla_lista_docentes td{
+	padding: 1%;
+	background: white;
+	
+}
+
+td#td_caract{
+	width: 17%;
+}
+
+.tabla_PG{
+	background: #BDBDBD;
+}
+
+.tabla_PG td{
+   padding: .5%;
+	background: white;
+}
+
+
+
+h2#titulo_PA{
+  
+  margin: 0px;
+  color:#BDBDBD;
+}
+h3#titulos_PA{
+	background: #81BEF7;
+	border-color: black;
+}
+
+
+
+table#tabla_justificacion{
+
+background-color: #BDBDBD;
+padding: 1%;
+width: 100%;
+margin: 0px;
+
+}
+table#tabla_justificacion td
+{
+	padding: 1%;
+	background-color: white;
+	
+}
+
+table#tabla_Objetivo {
+background-color: #BDBDBD;
+padding: 1%;
+width: 100%;
+margin: 0px;
+	
+}
+
+table#tabla_Objetivo td{
+	background-color: white;
+	padding: 1%;
+}
+
+table#tabla_Unidad{
+background-color: #BDBDBD;
+padding: 1%;
+width: 100%;
+margin: 0px;
+}
+
+table#tabla_Unidad td{
+background-color: white;
+padding: 1%;
+}
+
+table#tabla_sub_Unidad{
+background-color: #BDBDBD;
+padding: 1%;
+width: 100%;
+margin: 0px;
+}
+
+table#tabla_sub_Unidad td{
+background-color: white;
+padding: 1%;
+
+}
+
+table#tabla_Insertar_Unidad{
+background-color: #BDBDBD;
+padding: 1%;
+width: 100%;
+margin: 0px;
+}
+
+table#tabla_Insertar_Unidad td{
+background-color: white;
+padding: 1%;
+}
+
+table#tabla_sub_Creacion_Unidad{
+background-color: #BDBDBD;
+padding: 1%;
+width: 70%;
+margin: 0px;
+}
+
+table#tabla_sub_Creacion_Unidad td{
+background-color: white;
+padding: 1%;
+
+}
+
+table#tabla_Insertar_Objetivo{
+background-color: #BDBDBD;
+padding: 1%;
+width: 70%;
+margin: 0px;
+}
+
+table#tabla_Insertar_Objetivo td{
+background-color: white;
+padding: 1%;
+}
+
+table#tabla_Ingresar_Contenido{
+background-color: #BDBDBD;
+padding: 1%;
+width: 70%;
+margin: 0px;
+}
+
+table#tabla_Ingresar_Contenido td{
+background-color: white;
+padding: 1%;	
+}
+
+table#tabla_editar_unidad{
+	background-color: #BDBDBD;
+	padding: 1%;
+	width: 70%;
+	margin: 0px;
+}
+
+table#tabla_editar_unidad td{
+	background-color: white;
+    padding: 1%;	
+}
+
+table#tabla_Metodologia{
+	background-color: #BDBDBD;
+	padding: 1%;
+	width: 70%;
+	margin: 0px;
+}
+
+table#tabla_Metodologia td{
+	background-color: white;
+    padding: 1%;	
+}
+
+table#tabla_pequena{
+background-color: #BDBDBD;
+	padding: 0.3%;
+	width: 70%;
+	margin: 0px;
+}
+
+table#tabla_pequena td{
+    background-color: white;
+	padding: 1%;
+	text-align: center;
+	
+}
+
+table#tabla_configuraciones{
+	background-color: #BDBDBD;
+	
+	width: 60%;
+	margin: 0px;
+	font-size: 13px;
+}
+
+table#tabla_configuraciones td{
+	background-color: white;
+	padding: 1%;
+
+}
+
+table#tabla_grande{
+    background-color: #BDBDBD;
+	padding: 1%;
+	width: 100%;
+	margin: 0px;
+}
+table#tabla_grande td{
+    background-color: white;
+	padding: 1%;
+}
+
+
+.tabla_Crear_Materia{
+    background-color: #BDBDBD;
+	
+	width: 60%;
+	margin: 0px;
+	font-size: 13px;
+}
+.tabla_Crear_Materia td{
+    background-color: white;
+	padding: 1%;
+}
+
+.tabla_listar_materias{
+    background-color: #BDBDBD;
+	
+	width: 70%;
+	margin: 0px;
+	font-size: 13px;
+}
+.tabla_listar_materias td{
+    background-color: white;
+	padding: 1%;
+
+}
+
+.tabla_Crear_Depa{
+	background-color: #BDBDBD;
+	width: 60%;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.tabla_Crear_Depa td{
+    background-color: white;
+	padding: 1%;
+
+}
+
+.tabla_listar_Docent {
+	background-color: #BDBDBD;
+	width: 50%;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.tabla_listar_Docent td{
+    background-color: white;
+	padding: 1%;
+
+}
+
+.tabla_grande_editPG{
+    background-color: #BDBDBD;
+	width: 70%;
+	margin: 0px;
+}
+.tabla_grande_editPG td{
+    background-color: white;
+	padding: 1%;
+	font-size: 13px;
+}
+
+.boton_principal_materia{
+	background-color: #BDBDBD;
+	width: 100%;
+	height: 5%;
+	color: black;
+	font-size: 18px;
+}
+
+table#tabla_Uno{
+	width: 100%;
+	border:#BDBDBD 4px solid;
+    padding: 1%;
+}
+
+table#tabla_Uno td{
+	padding: .5%;
+	
+}
+
+p#espacio{
+	color:white;
+	background-color: white;
+	margin: 0px;
+}
+
+.cuerpo_impresion{
+
+	padding: 5%;
+}
+
+hr#linea_PA{
+ height: 2px;
+ border:0px;
+ background-color: #BDBDBD;
+
+}
+
+h2#titulo_Principal_PA{
+	margin: 0px;
+}
+
+.tabla_seleccion_pg{
+	width: 100%;
+}
+
+.tabla_seleccion_pg td{
+	padding: 1%;
+
+}
+
+.button_seleccion{
+	width: 80%;
+	height: 30px;
+	font-size: 17px;
+
+}
+table#Tabla_Seleccion_Carrera{
+  
+  width:50%;
+}
+
+table#Tabla_Seleccion_Carrera td{
+  
+
+}
+
+table#tabla_nivel td{
+
+
+}
+.Select_Facultad{
+	width: 70%;
+	height: 30px;
+	font-size: 12px;
+}
+
+.Select_PG{
+	width: 70%;
+	height: 30px;
+	font-size: 12px;
+}
+.Select_Nivel{
+
+  width: 70%;
+	height: 30px;
+	font-size: 17px;
+	text-align: center;
+}
+
+.etiqueta_h3{
+	margin: 0px;
+}
+
+
+table#tabla_materias_nivel {
+ width: 100%;
+}
+table#tabla_materias_nivel td{
+ 
+}
+
+.tabla_materias_pg{
+	width: 70%;
+	background-color: #BDBDBD;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.tabla_materias_pg td{
+	
+	padding: 1%;
+	background-color: white;
+}
+.tabla_materias_pg .td_titulo{
+
+	background-color: #154360;
+	color:white;
+}
+
+.Txt_Buscar{
+
+	height: 25px;
+	font-size: 12px;
+	margin-top: 2%;
+	text-transform:uppercase;
+}
+
+.btn_buscar{
+	height: 25px;
+	border-style: none;
+	background-color: #d32f2f;
+	color: white;
+	font-size: 12px;
+
+}
+
+table#tabla_Buscador{
+	
+
+
+}
+
+table#tabla_Buscador td{
+ background-color: white;
+	
+}
+table#tabla_Buscador td#td_reco{
+	
+	width: 5%;
+}
+
+table#tabla_pg_resultados{
+
+	width: 60%;
+	background-color: #BDBDBD;
+	font-size: 13px;
+
+}
+
+table#tabla_pg_resultados td
+{
+	background-color: white;
+	padding: 1%;
+}
+
+td#td_conpact{
+	width: 15%;
+}
+.btn_examinar_pg{
+	border-style: none;
+	font-size: 12px;
+	color:blue;
+	background-color: white;
+	text-decoration:underline;
+	
+}
+.btn_rec{
+	
+	background: url('icon_rv.png');
+	width:28px; 
+	height:28px; 
+	border-color:white;
+	
+	margin-bottom: 15%;
+
+}
+
+table#tabla_video{
+	width: 90%;
+}
+
+table#tabla_video td{
+	background-color: red;
+}
+.titulo{
+	height: 30px;
+	font-size: 15px;
+	text-transform:uppercase;
+}
+
+.btn_examinar{
+	border-style: none;
+	background-color: white;
+	font-size: 13px;
+	color:blue;
+	text-decoration:underline;
+}
+h3{
+	margin: 0px;
+}
+h5{
+	margin: 0px;
+
+}
+
+.form{
+	margin: 0px;
+}

@@ -1,0 +1,359 @@
+.tabla_menu{
+padding: 1%;
+}
+
+.tabla_grande{
+	width: 70%;
+	background-color: #BDBDBD;
+	margin: 0px;
+	font-size: 13px;
+}
+
+.tabla_grande td{
+	
+	padding: 1%;
+	background-color: white;
+}
+
+ .mensaje_crear{
+  color: #154360;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#38b0d8+0,a2e3ee+100&1+0,0+100 */
+background: -moz-linear-gradient(left,  rgba(56,176,216,1) 0%, rgba(162,227,238,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(56,176,216,1) 0%,rgba(162,227,238,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(56,176,216,1) 0%,rgba(162,227,238,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38b0d8', endColorstr='#00a2e3ee',GradientType=1 ); /* IE6-9 */
+padding: 0.5%;
+}
+
+.mensaje_correcto{
+	color: #04B486;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a4f8ab+0,d4fcd4+100&1+0,0+100 */
+background: -moz-linear-gradient(left,  rgba(164,248,171,1) 0%, rgba(212,252,212,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(164,248,171,1) 0%,rgba(212,252,212,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(164,248,171,1) 0%,rgba(212,252,212,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4f8ab', endColorstr='#00d4fcd4',GradientType=1 ); /* IE6-9 */
+ padding: 0.5%;
+}
+
+.mensaje_error{
+	color:red;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f87770+0,fcbcbf+100&1+0,0+100 */
+background: -moz-linear-gradient(left,  rgba(248,119,112,1) 0%, rgba(252,188,191,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(248,119,112,1) 0%,rgba(252,188,191,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(248,119,112,1) 0%,rgba(252,188,191,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f87770', endColorstr='#00fcbcbf',GradientType=1 ); /* IE6-9 */
+padding: 0.5%;
+
+}
+
+p#espacio{
+ color: transparent;
+}
+
+h5{	font-family: Helvetica, Arial, sans-serif;}
+h4{	font-family: Helvetica, Arial, sans-serif;}
+h3{	font-family: Helvetica, Arial, sans-serif;}
+h2{	font-family: Helvetica, Arial, sans-serif;}
+h1{	font-family: Helvetica, Arial, sans-serif;}
+
+.tabla_100{
+	background-color: #BDBDBD;
+	margin: 0px;
+	width: 90%;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+}
+
+.tabla_100 td{
+	background-color:white;
+	padding: 1%;
+}
+
+.tabla_100 .td_tabla{
+	background-color: #154360;
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+
+.tabla_100 .td_tabla_corto{
+	background-color: #154360;
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+	width: 15%;
+	font-size: 13px;
+}
+
+
+
+.select_fact{
+	width: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+}
+.btn_crear_pg{
+ background-color: #0B615E;
+	color: white;
+	border: none;
+	padding: 1%;	
+}
+.btn_crear{
+	background-color: #0B615E;
+	color: white;
+	border: none;
+	padding: 1%;
+	width: 100px;
+	height: 25px;
+}
+
+.btn_crear_config
+{
+    background-color: #0B615E;
+	color: white;
+	border: none;
+	padding: 2%;
+	width: auto;
+	height: 25px;
+}
+
+.btn_editar
+{   color: white;
+	background-color: #045FB4;
+	border: none;
+	padding: 1%;
+	width: 100px;
+	height: 25px;
+}
+
+
+.btn_eliminar{
+	background-color: #FE2E2E;
+	border: none;
+	padding: 1%;
+	width: 100px;
+	height: 25px;
+	color: white;
+
+}
+
+.tabla_menu{
+ width: 100%;
+
+}
+
+.tabla_menu td{
+	background-color: white;
+	width: 20%;
+}
+
+.tabla_menu td .btn_menu_sup{
+	background: #B52121;
+    border:none;
+    color: white;
+    height: 30px;
+    width: 100%;
+    margin: 0px;
+   font-family: Helvetica, Arial, sans-serif;
+
+}
+
+/*ESTILOS DEL BUSCADOR*/
+
+.tabla_Buscador{
+	
+	width: 70%;
+	margin-left: 1%;
+     padding: 0px;
+}
+
+.tabla_Buscador td{
+	background-color: white;
+	width: 100%;
+	padding: .5%;
+	padding: 0px;
+}
+
+
+
+.tabla_Buscador .btn_mic
+{
+	width: 5%;
+	padding: 0px;
+
+}
+.btn_rec{
+	
+	width: 15px;
+	height: 15px;
+	background-image: url("mic.png");
+	border:none;
+	background-color: white;
+}
+
+ .btn_buscar
+{
+	background: #B52121;
+	width: 100%;
+	color: white;
+	border:none;
+	padding: 1%;
+	height: 19px;
+	font-size: 11px;
+}
+
+td#td_titulo_bus{
+	background: red;
+}
+.tabla_lista{
+
+	width: 90%;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	padding: 0.2%;
+}
+
+
+.tabla_lista td{
+	background-color: white;	
+}
+
+.tabla_lista .td_materia
+{
+	width: 400px;
+}
+
+.tabla_lista .td_sub_materia
+{
+	width: 70px;
+	text-align: center;
+}
+
+.btn_examinar_pg{
+    border-style: none;
+    font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	color:blue;
+	background-color: white;
+	text-decoration:underline;
+}
+
+
+@media screen and (max-width: 800px) {
+
+.tabla_100{
+	background-color: #BDBDBD;
+	margin: 0px;
+	width: 100%;
+
+}
+
+
+.tabla_100 td{
+	background-color:white;
+	padding: 1%;
+}
+
+.tabla_100 .td_tabla{
+	background-color: #154360;
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.tabla_menu td .btn_menu_sup{
+	background: #B52121;
+    border:none;
+    color: white;
+    height: 30px;
+    width: 100%;
+    margin: 0px;
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 10px;
+
+}
+
+/*ESTILOS DEL BUSCADOR*/
+
+.tabla_Buscador{
+	
+	width: 50%;
+	margin-left: 1%;
+     padding: 0px;
+}
+
+.tabla_Buscador td{
+	background-color: white;
+	width: 100%;
+	padding: .5%;
+	padding: 0px;
+
+}
+
+.txt_Buscador{
+
+	width: 300px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.tabla_Buscador .btn_mic
+{
+	width: 5%;
+	padding: 0px;
+
+}
+.btn_rec{
+	
+	width: 15px;
+	height: 15px;
+	background-image: url("mic.png");
+	border:none;
+	background-color: white;
+}
+
+ .btn_buscar
+{
+	background: #B52121;
+	width: 100%;
+	color: white;
+	border:none;
+	padding: 1%;
+	height: 19px;
+	font-size: 11px;
+}
+
+.text_llenado{
+     width: 100%;
+}
+
+.btn_crear{
+	background-color: #0B615E;
+	color: white;
+	border: none;
+	padding: 1%;
+	width: auto;
+	height: 25px;
+}
+
+
+
+.btn_editar
+{   color: white;
+	background-color: #045FB4;
+	border: none;
+	padding: 1%;
+	width: auto;
+	height: 25px;
+}
+
+
+.btn_eliminar{
+	background-color: #FE2E2E;
+	border: none;
+	padding: 1%;
+	width: auto;
+	height: 25px;
+	color: white;
+
+}
+
+
+}
