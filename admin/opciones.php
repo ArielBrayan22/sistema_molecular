@@ -93,19 +93,13 @@ $ID_PRUEBA=0;
 		  
 
 		}else{
-			echo '<option value="-"> Seleccione la carrera</option>';
+			echo '<option value="-"> Seleccione la materia</option>';
 		    while($ln2 = mysql_fetch_assoc($resultado)){
-		        echo '<option value="'.$ln2['ID_Materia'].'">'.$ln2['Nombre_Materia'].'</option>';
+		        echo '<option value="'.$ln2['ID_Materia'].'">'.$ln2['Nombre_Materia'].' Gupo '.$ln2['Grupo'].'</option>';
 
 		    }
 		}
 	}
-
-	
-	
-
-
-   
 
 
 ?>

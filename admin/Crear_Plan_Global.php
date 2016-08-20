@@ -25,7 +25,52 @@
 
   require("coneccion.php");
    //MOSTRAR LISTADO DE PLANES GLOBALES
-   mostrar_pg_cortos();
+   //mostrar_pg_cortos();
+
+
+  mostar_acordion();
+  function mostar_acordion()
+  {
+    echo '<table class="tabla_menu">
+          <form method="post" actio="Crear_Plan_Global.php"><tr><td>
+          <input type="submit" class="btn_menu_sup" value="Lista Planes Globales" name="btn_Ver_Planes_Globales"></form></td>';
+
+    echo "<form method='post' action='Crear_Plan_Global_2.php'>
+          <td><input  type='submit' class='btn_menu_sup' name='btn_Crear_Plan_Global' value='Crear Plan Global'></td>";
+
+    echo "<td><input type='submit' class='btn_menu_sup' value='Kardex' name='btn_kardex_PG'></td>
+          <td><input type='submit' class='btn_menu_sup' value='Bitacora' name='btn_Registro_PG'></td>
+          <td><input type='submit' class='btn_menu_sup' value='Configuraciones' name='btn_Configuracion'></form>
+          </td></tr></table>";
+
+    echo '<table class="tabla_Buscador">
+          <tr><td class="btn_mic"> <button onclick="procesar()" id="procesar" class="btn_rec">';
+               
+    echo '</button></td><td>
+          <form method="post" action="Crear_Plan_Global_2.php"><input type="text" class="txt_Buscador" id="texto" size="70" name="txt_buscar_pg" placeholder="Escriba el Plan Global a Buscar"></td><td class="td_btn_buscar">
+          <input type="submit" class="btn_buscar" name="Buscar_PG" value=" Buscar "></td></tr></form></table>
+          ';
+    
+    echo "<form method='post' action='Crear_Plan_Global_2.php'> <h5>Si desea listar todos los planes globales presione :
+        <input type='submit' class='btn_examinar_pg' value='listar Planes Globales' name='btn_mostrar_lista_pg'> </form><p id='espacio'>a</p>";
+
+
+
+     $sql="SELECT * FROM facultad";
+     $consulta=mysql_query($sql);
+  
+      while($row=mysql_fetch_array($consulta))
+      {
+     
+        $ID_Facultad=$row['ID_Facultad'];
+        $Facultad=$row['Facultad'];
+     
+        echo "<form method='post' action='Crear_Plan_Global_2.php'>
+           <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+          <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+         </form>";
+         }
+  }
 
 
    

@@ -36,13 +36,10 @@
                   <td><input type='submit' class='btn_menu_sup' value='Bitacora' name='btn_Registro_PG'></td>
                   <td><input type='submit' class='btn_menu_sup' value='Configuraciones' name='btn_Configuracion'></form></td></tr></table>";
 
-
-
-    if(isset($_POST['btn_Mostrar_Materia_Unitaria2']))
-     {
-            $ID_PG=$_POST['txt_ID_PG'];
-
-               echo '<table class="tabla_Buscador">
+//FUNCION MOSTRAR BUSCADOR
+function mostrar_buscador()
+{
+    echo '<table class="tabla_Buscador">
                 <tr><td class="btn_mic"> 
                 <button onclick="procesar()" id="procesar" class="btn_rec">';
                
@@ -52,7 +49,316 @@
                 <input type="submit" class="btn_buscar" name="Buscar_PG" value=" Buscar ">
                 </td></tr></form></table>';
 
-          echo "<p id='espacio'>a</p>";
+              echo "<form method='post' action='Crear_Plan_Global_2.php'>
+              <h5> Si desea listar todos los planes globales presione :
+              <input type='submit' class='btn_examinar_pg' value='listar Planes Globales' name='btn_mostrar_lista_pg'>
+              </form><p id='espacio'>a</p>";
+}
+
+//ACORDEON 
+
+if(isset($_POST['btn_depa']))
+{   mostrar_buscador();
+        $ID_F=$_POST['ID_Facultad'];
+ 
+      $sql="SELECT * FROM facultad";
+      $consulta=mysql_query($sql);
+     
+      while($row=mysql_fetch_array($consulta))
+      {
+        $ID_Facultad=$row['ID_Facultad'];
+        $Facultad=$row['Facultad'];
+        echo "<form method='post' action=''>
+              <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+              <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+              </form>"; 
+
+        if($row['ID_Facultad']==$ID_F){
+            $row['ID_Facultad'];
+            
+            $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+            $consulta1=mysql_query($sql1);
+
+            while ($row1=mysql_fetch_array($consulta1)) {
+                $ID_Dep=$row1['ID_Departamento'];
+                $Departamento=$row1['Departamento'];
+
+                echo "<form method='post' action=''>
+
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+                </form>";
+            }
+
+
+          }
+   
+     
+        }
+
+    }
+
+    if(isset($_POST['btn_car']))
+    {     mostrar_buscador();
+          $ID_F=$_POST['ID_Facultad'];
+          $ID_Dep1=$_POST['ID_Departamento'];
+          
+          $sql="SELECT * FROM facultad";
+          $consulta=mysql_query($sql);
+          
+          while($row=mysql_fetch_array($consulta))
+          {
+            $ID_Facultad=$row['ID_Facultad'];
+            $Facultad=$row['Facultad'];
+            echo "<form method='post' action=''>
+                  <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+                  <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+                  </form>"; 
+
+           if($row['ID_Facultad']==$ID_F){
+                
+            $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+            $consulta1=mysql_query($sql1);
+
+            while ($row1=mysql_fetch_array($consulta1)) {
+                $ID_Dep=$row1['ID_Departamento'];
+                $Departamento=$row1['Departamento'];
+
+                echo "<form method='post' action=''>
+
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+                </form>";
+
+                if($row1['ID_Departamento']==$ID_Dep1)
+                {
+                  $sql2="SELECT * FROM carrera WHERE ID_Departamento='$ID_Dep1'";
+                  $consulta2=mysql_query($sql2);
+
+                  while ($row2=mysql_fetch_array($consulta2)) {
+                    
+                    $ID_Carrera=$row2['ID_Carrera'];
+                    $Carrera=$row2['nombre_carrera'];
+                
+                  echo "<form method='post' action=''>
+                    <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                    <input type='text' name='ID_Departamento' value='$ID_Dep1' class='txt_invi'>
+                    <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                    <input type='submit' name='btn_nivel' class='txt_direc' value='$Carrera'>
+                    </form>";
+                   
+                   }
+
+               }
+             
+            }
+          
+         }
+       }
+    }
+
+    //MOSTRAR NIVELES
+
+    if(isset($_POST['btn_nivel']))
+    {
+            mostrar_buscador();
+           $ID_F=$_POST['ID_Facultad'];
+           $ID_Dep1=$_POST['ID_Departamento'];
+           $ID_C=$_POST['ID_Carrera'];
+          
+          $sql="SELECT * FROM facultad";
+          $consulta=mysql_query($sql);
+          
+          while($row=mysql_fetch_array($consulta))
+          {
+            $ID_Facultad=$row['ID_Facultad'];
+            $Facultad=$row['Facultad'];
+            echo "<form method='post' action=''>
+                  <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+                  <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+                  </form>"; 
+
+           if($row['ID_Facultad']==$ID_F){
+                
+            $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+            $consulta1=mysql_query($sql1);
+
+            while ($row1=mysql_fetch_array($consulta1)) {
+                $ID_Dep=$row1['ID_Departamento'];
+                $Departamento=$row1['Departamento'];
+
+                echo "<form method='post' action=''>
+
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+                </form>";
+
+                if($row1['ID_Departamento']==$ID_Dep1)
+                {
+                  $sql2="SELECT * FROM carrera WHERE ID_Departamento='$ID_Dep1'";
+                  $consulta2=mysql_query($sql2);
+
+                  while ($row2=mysql_fetch_array($consulta2)) {
+                    
+                    $ID_Carrera=$row2['ID_Carrera'];
+                    $Carrera=$row2['nombre_carrera'];
+                
+                  echo "<form method='post' action=''>
+                    <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                    <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                    <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                    <input type='submit' name='btn_nivel' class='txt_direc' value='$Carrera'>
+                    </form>";
+
+                    if($row2['ID_Carrera']==$ID_C)
+                    {
+                        $sql3="SELECT DISTINCT Nivel_Materia FROM materia WHERE ID_Carrera='$ID_C' ORDER BY Nivel_Materia ASC";
+                        $consulta3=mysql_query($sql3);
+
+                  while ($row3=mysql_fetch_array($consulta3)) {
+                        
+                        $Nivel=$row3['Nivel_Materia'];
+                        
+                
+                  echo "<form method='post' action=''>
+                    <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                    <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                    <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                    <input type='text' name='Nivel' value='$Nivel' class='txt_invi'>
+
+                    <input type='submit' name='btn_Mat' class='txt_direc' value='$Nivel'>
+                    </form>";
+                    }
+                   }                   
+                 }
+               }      
+            }
+         }
+       }
+    }
+  
+
+    //MOSTRAR MATERIAS
+
+    if(isset($_POST['btn_Mat']))
+    {     mostrar_buscador();
+          $ID_F=$_POST['ID_Facultad'];
+          $ID_Dep1=$_POST['ID_Departamento'];
+          $ID_C=$_POST['ID_Carrera'];
+          $Nivel_S=$_POST['Nivel'];
+
+          
+          $sql="SELECT * FROM facultad";
+          $consulta=mysql_query($sql);
+          
+          while($row=mysql_fetch_array($consulta))
+          {
+            $ID_Facultad=$row['ID_Facultad'];
+            $Facultad=$row['Facultad'];
+            echo "<form method='post' action=''>
+                  <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+                  <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+                  </form>"; 
+
+           if($row['ID_Facultad']==$ID_F){
+                
+            $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+            $consulta1=mysql_query($sql1);
+
+            while ($row1=mysql_fetch_array($consulta1)) {
+                $ID_Dep=$row1['ID_Departamento'];
+                $Departamento=$row1['Departamento'];
+
+                echo "<form method='post' action=''>
+
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+                </form>";
+
+                if($row1['ID_Departamento']==$ID_Dep1)
+                {
+                  $sql2="SELECT * FROM carrera WHERE ID_Departamento='$ID_Dep1'";
+                  $consulta2=mysql_query($sql2);
+
+                  while ($row2=mysql_fetch_array($consulta2)) {
+                    
+                    $ID_Carrera=$row2['ID_Carrera'];
+                    $Carrera=$row2['nombre_carrera'];
+                
+                  echo "<form method='post' action=''>
+                    <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                    <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                    <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                    <input type='submit' name='btn_nivel' class='txt_direc' value='$Carrera'>
+                    </form>";
+
+                    if($row2['ID_Carrera']==$ID_C)
+                    {
+                        $sql3="SELECT DISTINCT Nivel_Materia FROM materia WHERE ID_Carrera='$ID_C' ORDER BY Nivel_Materia ASC";
+                        $consulta3=mysql_query($sql3);
+
+                  while ($row3=mysql_fetch_array($consulta3)) {
+                        
+                        $Nivel=$row3['Nivel_Materia'];
+                        
+                
+                    echo "<form method='post' action=''>
+                    <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                    <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                    <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                    <input type='text' name='Nivel' value='$Nivel' class='txt_invi'>
+
+                    <input type='submit' name='btn_Mat' class='txt_direc' value='$Nivel'>
+                    </form>";
+
+                      if($Nivel_S==$row3['Nivel_Materia'])
+                      {
+                        
+                        $sql4="SELECT * FROM materia m, planglobal pg WHERE m.ID_Carrera='$ID_C' 
+                               AND m.Nivel_Materia='$Nivel_S' AND m.ID_Materia=pg.ID_Materia ORDER BY m.Grupo ASC";
+                        $consulta4=mysql_query($sql4);
+
+                        while ($row4=mysql_fetch_array($consulta4)) {
+                        $ID_Materia=$row4['ID_Materia'];
+                        $Nombre_Materia=$row4['Nombre_Materia'];
+                        $Grupo=$row4['Grupo'];
+                        $ID_PG=$row4['ID_PG'];
+
+                        echo "<form method='post' action=''>
+
+                        <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                        <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                        <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                        <input type='text' name='Nivel' value='$Nivel' class='txt_invi'>
+                        <input type='text' name='ID_Materia' value='$ID_Materia' class='txt_invi'>
+                        <input type='text' name='txt_ID_PG' value='$ID_PG' class='txt_invi'>
+
+                        <input type='submit' name='btn_Mostrar_Materia_Unitaria2' class='txt_direc' value='$Nombre_Materia - Grupo - $Grupo'></br>";
+                    
+                    }
+                 }
+            }
+          }
+         }
+       } 
+      }
+       }
+     }
+    }                
+
+  
+   //Mostrar materias 
+
+    if(isset($_POST['btn_Mostrar_Materia_Unitaria2']))
+     {
+            $ID_PG=$_POST['txt_ID_PG'];
+           mostrar_buscador();
+
+              
          
           $query="SELECT * FROM planglobal pg, materia m, docente d, gestion g, tipo t
                   WHERE pg.ID_PG=$ID_PG AND pg.ID_Materia=m.ID_Materia AND pg.ID_Docente=d.ID_Docente
@@ -86,8 +392,8 @@
                     </table> </form><p></p>";
              }
 
-             echo  "<form method='post' >
-                    <center><input type='submit'class='btn_examinar_pg'  value='volver' name='btn_Volver_a_listar_pg'></center>
+             echo  "<form method='post' action='Crear_Plan_Global_2.php' >
+                    <center><input type='submit'class='btn_examinar_pg'  value='volver' name='btn_mostrar_lista_pg'></center>
 
                     </form>";  
            }
@@ -255,7 +561,7 @@
         <h5>Se recomienda seleccionar cada opcion segun el organigrama de la UMSS</h5></td></tr>
 
         <tr><td class="td_tabla">Facultad</td><td>
-        <select name="facultad">
+        <select name="facultad" class="select_fact">
         <option value="0">Seleccione la Facultad</option>';
 
         $sql = "SELECT * FROM facultad ORDER BY Facultad ASC";
@@ -283,7 +589,17 @@
        
          <select name="nivel">
              <option value="0" ">Seleccione el nivel</option>
-             <option value="1" disabled="disabled">materias</option>
+             <option name="A"> A </option>
+             <option name="B"> B </option>
+             <option name="C"> C </option>
+             <option name="D"> D </option>
+             <option name="E"> E </option>
+             <option name="F"> F </option>
+             <option name="G"> G </option>
+             <option name="H"> H </option>
+             <option name="I"> I </option>
+             <option name="J"> J </option>
+             
         </select>
         </td></tr>
         
@@ -332,7 +648,7 @@
         }
         echo "</select></td></tr>
 
-        <tr><td colspan='2'><center><input type='submit' class='btn_crear' value='Crear Nuevo Plan Global' name='btn_Crear_Plan_Global2'></center></td></tr>";
+        <tr><td colspan='2'><center><input type='submit' class='btn_crear_pg' value='Crear Nuevo Plan Global' name='btn_Crear_Plan_Global2'></center></td></tr>";
 
         echo "</table></form>";  
      }
@@ -345,7 +661,7 @@
         $Seleccion_F=$_POST['facultad'];
         $Seleccion_Dep=$_POST['departamento'];
         $Seleccion_C=$_POST['carrera'];
-        echo $Seleccion_N=$_POST['nivel'];
+        $Seleccion_N=$_POST['nivel'];
         $Seleccion_M=$_POST['materia'];
         $Seleccion_D=$_POST['docente'];
         $Seleccion_T=$_POST['tipo'];
@@ -381,7 +697,7 @@
           for ($i=0;$i<count($Seleccion_G);$i++) 
             {  $ID_Gestion=$Seleccion_G[$i];}
             
-            echo $Nivel;
+            $Nivel;
             $ID_Materia=$Seleccion_M;
             $ID_Nivel=$Seleccion_N;
 
@@ -430,62 +746,6 @@
 
         
 
-
-
-        //$ID_Tipo." - ".$ID_Gestion;
-         
-         /*INSERT INTO `planglobal` (`ID_PG`, `ID_Tipo`, `ID_Materia`, `ID_Docente`, `ID_Gestion`) VALUES (NULL, '1', '1', '1', '1');*/
-         
-
-        /* $query="SELECT * FROM planglobal WHERE 
-                 ID_Tipo='$ID_Tipo' AND ID_Docente='$ID_Docente' AND ID_Gestion='$ID_Gestion' AND ID_Materia='$ID_Materia' ";
-                 $resultado=mysql_query($query,$link);
-                 $cont=0;
-                 $cont_realcion=0;
-                 
-                 while($row=mysql_fetch_array($resultado))
-                 {
-                  $cont++;
-                 }
-
-          $query1="SELECT * FROM carrera c, materia m WHERE 
-                  c.ID_Facultad='$ID_Facultad' AND c.ID_CARRERA='$ID_Carrera' AND m.ID_Carrera='$ID_Carrera'";
-                 $resultado1=mysql_query($query1,$link);
-                 
-                 while($row=mysql_fetch_array($resultado1))
-                 {
-                   $cont_realcion++;
-                 }
-
-                if($cont==0 && $cont_realcion>0)
-                 {
-                  
-                  
-                    $query="INSERT INTO planglobal 
-                    (`ID_PG`, `ID_Tipo`, `ID_Materia`, `ID_Docente`, `ID_Gestion`)
-                     VALUES (NULL, '".$ID_Tipo."', '".$ID_Materia."', '".$ID_Docente."','".$ID_Gestion."');";
-                     $resultado=mysql_query($query,$link);
-                     
-
-                    echo "Creacion Correcta del Plan Global";
-                    mostrar_pg_cortos();
-
-                 }
-
-                 if($cont_realcion==0 && $cont>0)
-                 {
-                   echo "(*) La facultad y la carrera no pertenecen a la materia para crear el Plan Global";
-                   mostrar_crear_PG();
-                 }
-
-                
-          
-                 if($cont>0 && $cont_realcion>0){
-                  echo "Plan Global ya Existente verifique su lista de Planes Globales";
-                 mostrar_crear_PG();
-                 
-                 }
-                 */
       }
 
 
@@ -861,7 +1121,12 @@
       echo "<p class='mensaje_error'>Plan Global Eliminado Correctamente</p>";
       mostrar_pg2();
     }
-  
+    
+    if(isset($_POST['btn_mostrar_lista_pg']))
+    {
+       mostrar_pg2();
+    }
+
      function mostrar_pg2()
      {
        require("coneccion.php");
@@ -934,7 +1199,7 @@
                 </td></tr></form></table>';
 
 
-       echo "<p id='espacio'>a<p><h3>Resultados de Planes Globales en KARDEX </h3>";
+       echo "<p id='espacio'>a<p><h4>Resultados de Planes Globales en KARDEX </h4>";
        echo "<h5>Con el boton Restaurar recupera el Plan Global Eliminado con su respectivo Programa Analitico.</h5><p id='espacio'>a<p>";
 
 
@@ -1158,9 +1423,9 @@
 
         if(isset($_POST['Buscar_PG']))
         {
-           $Text_a_Buscar=$_POST['txt_buscar_pg'];
 
-        echo '<table class="tabla_Buscador">
+           $Text_a_Buscar=$_POST['txt_buscar_pg'];
+            echo '<table class="tabla_Buscador">
                 <tr><td class="btn_mic"> 
                 <button onclick="procesar()" id="procesar" class="btn_rec">';
                
@@ -1171,18 +1436,26 @@
                 </td></tr></form></table>';
 
           echo "<H5>RESULTADO DE PLANES GLOBLAES</H5>";
-          echo "<H5>(*) Seleccione los botones de Editar para realizar cambios y de Eliminar para borrar el Plan Global</H5></p>";
+          echo "<H5>(*) Seleccione los botones de Editar para realizar cambios y de Eliminar para borrar el Plan Global</H5></p>
+          <p id='espacio'>a</p>";
 
-          $query="SELECT * FROM planglobal pg, materia m, docente d, gestion g, tipo t
+           if($Text_a_Buscar=="")
+           {
+               echo "<p class='mensaje_correcto'>Nose encontraron resultados escriba en el buscador</p>";
+
+           }
+           
+           else{
+           $query="SELECT * FROM planglobal pg, materia m, docente d, gestion g, tipo t
                   WHERE m.Nombre_Materia LIKE '%$Text_a_Buscar%' AND pg.ID_Materia=m.ID_Materia 
                   AND pg.ID_Docente=d.ID_Docente AND pg.ID_Tipo=t.ID_Tipo AND pg.ID_Gestion=g.ID_Gestion
                   ORDER BY m.Nombre_Materia ASC";
           
-          $resultado=mysql_query($query,$link);
-          echo "";
-
-          while($row=mysql_fetch_array($resultado))
-          {
+           $resultado=mysql_query($query,$link);
+           $cont=0;
+          
+           while($row=mysql_fetch_array($resultado))
+           {    $cont++;
               echo "<table class='tabla_lista_pg'><form method='post' action=''>
                     
                      <tr><td id='td_caract'>Materia</td><td colspan='3'>".$row['Nombre_Materia']."</td></tr>
@@ -1204,7 +1477,15 @@
                      </td></tr>
 
                     </table> </form><p></p>";
-          }
+               }
+                if($cont==0)
+                 {
+                     echo "<p class='mensaje_correcto'>Nose encontraron resultados</p>";
+                    }
+           }
+
+        
+
 
          }
 
@@ -1213,7 +1494,7 @@
          if(isset($_POST['btn_Buscar_Kardex']))
          {
             $Text_a_Buscar=$_POST['txt_buscar_pg'];
-
+   
              echo '<table class="tabla_Buscador">
                 <tr><td class="btn_mic"> 
                 <button onclick="procesar()" id="procesar" class="btn_rec">';
@@ -1225,34 +1506,29 @@
                 </td></tr></form></table>';
 
 
-                echo "<p id='espacio'>a<p><h3>Resultados de Planes Globales en KARDEX </h3>";
+                echo "<p id='espacio'>a<p><h4>Resultados de Planes Globales en KARDEX </h4>";
                  echo "<h5>Con el boton Restaurar recupera el Plan Global Eliminado con su respectivo Programa Analitico.</h5>
                  <p id='espacio'>a<p>";
 
+                if($Text_a_Buscar=="")
+                {
+                 echo "<p class='mensaje_correcto'>Nose encontraron resultados escriba en el buscador</p>";
 
-           $sql="SELECT * FROM kardex k,materia m, docente d ,tipo t, gestion g
+                }
+
+                else{
+
+                 $sql="SELECT * FROM kardex k,materia m, docente d ,tipo t, gestion g
                  WHERE k.ID_Materia_K=m.ID_Materia AND k.ID_Docente_K=d.ID_Docente 
                  AND k.ID_Tipo_K=t.ID_TIPO AND k.ID_Gestion_K=g.ID_Gestion AND m.Nombre_Materia LIKE '%$Text_a_Buscar%'";
 
-               $resultado=mysql_query($sql,$link);
-
-            $cont=0;
-
-           while($row=mysql_fetch_array($resultado))
-           { $cont++; }
-
-           if($cont>0){
-              
-              $sql="SELECT * FROM kardex k,materia m, docente d ,tipo t, gestion g
-                 WHERE k.ID_Materia_K=m.ID_Materia AND k.ID_Docente_K=d.ID_Docente 
-                 AND k.ID_Tipo_K=t.ID_TIPO AND k.ID_Gestion_K=g.ID_Gestion AND m.Nombre_Materia LIKE '%$Text_a_Buscar%'";
-
-               $resultado=mysql_query($sql,$link);
-               while($row=mysql_fetch_array($resultado)){
-
-                echo "<form method='post'>
+                 $resultado=mysql_query($sql,$link);
+                 $cont=0;
+                 while($row=mysql_fetch_array($resultado)){
+                    $cont++;
+                  echo "<form method='post'>
                       <table class='tabla_100'>";
-                 echo "<tr><td class='td_tabla_corto'>Materia</td><td colspan='3'>".$row['Nombre_Materia']."</td></tr>
+                   echo "<tr><td class='td_tabla_corto'>Materia</td><td colspan='3'>".$row['Nombre_Materia']."</td></tr>
 
                    <tr><td class='td_tabla_corto'>Codigo</td><td>".$row['Codigo']."</td><td>Grupo</td><td>".$row['Grupo']."</td></tr>
 
@@ -1269,13 +1545,15 @@
 
                    </table></form><p id='espacio'>a<p>";}
 
-           }
-            else{ 
-                  mostrar_kardex_busqueda();
-                  echo "<p class='mensaje_crear'>Kardex de Plan Global no encontrado</p>";
-            }
+                   if($cont==0)
+                   {
+                     echo "<p class='mensaje_correcto'>Kardex de Plan Global no encontrado</p>";
+          
+                   }
 
-            }
+              }
+          
+        }
 
          //BUSQUEDA BITACORA 
          if(isset($_POST['btn_Buscar_Bitacora']))
@@ -1426,11 +1704,9 @@
            <table class='tabla_100'>
             <tr><td class='td_tabla'>Gestion</td>
             <td><input type='text' name='txt_nueva_gestion' size='10'></td>
-            <td class='td_tabla' >Semestre</td>
-            <td><input type='text' name='txt_nuevo_semestre' size='10'></td>
-            
-            <td><input type='submit' class='btn_crear' name='btn_agregar_gestion' value='Crear Gestion'></br>
-           
+            <td rowspan='2'><center><input type='submit' class='btn_crear' name='btn_agregar_gestion' value='Crear Gestion'>
+            </center></td></tr>
+            <tr><td class='td_tabla'>Semestre</td><td><input type='text' name='txt_nuevo_semestre' size='20'></td>
             </table>
             
             <p id='espacio'>a</p>
@@ -1442,11 +1718,11 @@
 
           while ($row=mysql_fetch_array($resultado)) {
           echo "<table class='tabla_100'><form method='post'>";
-          echo "<tr><td><input type='text' value='".$row['gestion']."' name='gestion' size='5'></td>
+          echo "<tr><td><input type='text' value='".$row['gestion']."' name='gestion' size='10'></td>
                 <td><input type='text' value='".$row['semestre']."' name='semestre' size='10'> <input type='text' value='".$row['ID_Gestion']
                 ."' name='ID_Gestion' style='width:1px; visibility:hidden;'</td>
-                <td><input type='submit' class='btn_editar'value='Editar' name='btn_Editar_Gestion'></td>
-                <td><input type='submit' class='btn_eliminar' value='Eliminar' name='btn_Eliminar_Gestion'></td></tr>";
+                <td><center><input type='submit' class='btn_editar'value='Editar' name='btn_Editar_Gestion'></center></td>
+                <td><center><input type='submit' class='btn_eliminar' value='Eliminar' name='btn_Eliminar_Gestion'></center></td></tr>";
           echo "</form></table>";}
 
 
@@ -1463,8 +1739,8 @@
             <tr><td class='td_tabla'>Tipo de Docente</td>
             <td><input type='text' name='txt_Tipo_Docente' size='15'></td>
             
-            <td><input type='submit' class='btn_crear' name='btn_agregar_tipo_docente' value='Crear Tipo'>
-            </td></tr>
+            <td><center><input type='submit' class='btn_crear' name='btn_agregar_tipo_docente' value='Crear Tipo'>
+            </center></td></tr>
             </table>
             <p id='espacio'>a<p>
             <center><input type='submit' value='Volver' name='btn_Configuracion' class='btn_examinar_pg'></center>

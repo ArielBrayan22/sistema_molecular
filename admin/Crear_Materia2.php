@@ -18,11 +18,11 @@
 <form method='post' action='Crear_Materia.php'>
                   <center>
                   <table class='tabla_menu'>
-                  <tr><td class='btn_menu_sup'><input  type='submit' class='btn_menu_sup' value='Listado de Materias' name='btn_Ver_Listado_Materias'></td>
+                  <tr><td class='btn_menu_sup'><input  type='submit' class='btn_menu_sup' value='Materias' name='btn_Ver_Listado_Materias'></td>
                   </form>
                   <form method='post' action='Crear_Materia2.php'>
                   <td class='btn_menu_sup'><input  class='btn_menu_sup' type='submit' name='btn_Crear_Materia' value='Crear Materia' ></td>
-                  <td class='btn_menu_sup'><input  class='btn_menu_sup' type='submit' name='btn_Crear_Departamentos' value='Crear Departamentos' ></td></tr>
+                  <td class='btn_menu_sup'><input  class='btn_menu_sup' type='submit' name='btn_Crear_Departamentos' value='Sectores' ></td></tr>
                   </table>
                   </center>
                   </form>
@@ -34,7 +34,298 @@
   <?php
 
   require('coneccion.php');
+   mostrar_buscador_solo();
 
+  if(isset($_POST['btn_depa']))
+  {
+        $ID_F=$_POST['ID_Facultad'];
+ 
+      $sql="SELECT * FROM facultad";
+    $consulta=mysql_query($sql);
+     
+      while($row=mysql_fetch_array($consulta))
+    {
+      $ID_Facultad=$row['ID_Facultad'];
+      $Facultad=$row['Facultad'];
+      echo "<form method='post' action=''>
+              <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+              <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+              </form>"; 
+
+      if($row['ID_Facultad']==$ID_F){
+          $row['ID_Facultad'];
+        
+        $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+          $consulta1=mysql_query($sql1);
+
+          while ($row1=mysql_fetch_array($consulta1)) {
+            $ID_Dep=$row1['ID_Departamento'];
+              $Departamento=$row1['Departamento'];
+
+              echo "<form method='post' action=''>
+
+              <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+              <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+              <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+              </form>";
+          }
+
+
+        }
+   
+     
+        }
+
+  }
+
+  if(isset($_POST['btn_car']))
+  {
+          $ID_F=$_POST['ID_Facultad'];
+           $ID_Dep1=$_POST['ID_Departamento'];
+          
+          $sql="SELECT * FROM facultad";
+        $consulta=mysql_query($sql);
+          
+          while($row=mysql_fetch_array($consulta))
+        {
+        $ID_Facultad=$row['ID_Facultad'];
+        $Facultad=$row['Facultad'];
+        echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+                <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+                </form>"; 
+
+         if($row['ID_Facultad']==$ID_F){
+              
+          $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+          $consulta1=mysql_query($sql1);
+
+          while ($row1=mysql_fetch_array($consulta1)) {
+            $ID_Dep=$row1['ID_Departamento'];
+              $Departamento=$row1['Departamento'];
+
+              echo "<form method='post' action=''>
+
+              <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+              <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+              <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+              </form>";
+
+              if($row1['ID_Departamento']==$ID_Dep1)
+              {
+                  $sql2="SELECT * FROM carrera WHERE ID_Departamento='$ID_Dep1'";
+                $consulta2=mysql_query($sql2);
+
+                while ($row2=mysql_fetch_array($consulta2)) {
+          
+          $ID_Carrera=$row2['ID_Carrera'];
+                $Carrera=$row2['nombre_carrera'];
+              
+                echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep1' class='txt_invi'>
+                <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                <input type='submit' name='btn_nivel' class='txt_direc' value='$Carrera'>
+                </form>";
+                 
+                 }
+
+             }
+             
+         }
+          
+       }
+     }
+  }
+
+  //MOSTRAR NIVELES
+
+  if(isset($_POST['btn_nivel']))
+  {
+           $ID_F=$_POST['ID_Facultad'];
+           $ID_Dep1=$_POST['ID_Departamento'];
+           $ID_C=$_POST['ID_Carrera'];
+          
+          $sql="SELECT * FROM facultad";
+        $consulta=mysql_query($sql);
+          
+          while($row=mysql_fetch_array($consulta))
+        {
+        $ID_Facultad=$row['ID_Facultad'];
+        $Facultad=$row['Facultad'];
+        echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+                <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+                </form>"; 
+
+         if($row['ID_Facultad']==$ID_F){
+              
+          $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+          $consulta1=mysql_query($sql1);
+
+          while ($row1=mysql_fetch_array($consulta1)) {
+            $ID_Dep=$row1['ID_Departamento'];
+              $Departamento=$row1['Departamento'];
+
+              echo "<form method='post' action=''>
+
+              <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+              <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+              <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+              </form>";
+
+              if($row1['ID_Departamento']==$ID_Dep1)
+              {
+                  $sql2="SELECT * FROM carrera WHERE ID_Departamento='$ID_Dep1'";
+                $consulta2=mysql_query($sql2);
+
+                while ($row2=mysql_fetch_array($consulta2)) {
+          
+          $ID_Carrera=$row2['ID_Carrera'];
+                $Carrera=$row2['nombre_carrera'];
+              
+                echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                <input type='submit' name='btn_nivel' class='txt_direc' value='$Carrera'>
+                </form>";
+
+                if($row2['ID_Carrera']==$ID_C)
+                {
+                        $sql3="SELECT DISTINCT Nivel_Materia FROM materia WHERE ID_Carrera='$ID_C' ORDER BY Nivel_Materia ASC";
+                      $consulta3=mysql_query($sql3);
+
+                while ($row3=mysql_fetch_array($consulta3)) {
+                    
+                    $Nivel=$row3['Nivel_Materia'];
+                    
+              
+                echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                <input type='text' name='Nivel' value='$Nivel' class='txt_invi'>
+
+                <input type='submit' name='btn_Mat' class='txt_direc' value='$Nivel'>
+                </form>";
+                }
+               }                 
+               }
+             }      
+            }
+       }
+     }
+  }
+  
+
+    //MOSTRAR MATERIAS
+
+  if(isset($_POST['btn_Mat']))
+  {
+          $ID_F=$_POST['ID_Facultad'];
+          $ID_Dep1=$_POST['ID_Departamento'];
+          $ID_C=$_POST['ID_Carrera'];
+          $Nivel_S=$_POST['Nivel'];
+
+          
+          $sql="SELECT * FROM facultad";
+        $consulta=mysql_query($sql);
+          
+          while($row=mysql_fetch_array($consulta))
+        {
+        $ID_Facultad=$row['ID_Facultad'];
+        $Facultad=$row['Facultad'];
+        echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_Facultad' class='txt_invi'>
+                <input type='submit' name='btn_depa' class='txt_direc' value='$Facultad'>
+                </form>"; 
+
+         if($row['ID_Facultad']==$ID_F){
+              
+          $sql1="SELECT * FROM Departamento WHERE ID_Facultad='$ID_F'";
+          $consulta1=mysql_query($sql1);
+
+          while ($row1=mysql_fetch_array($consulta1)) {
+            $ID_Dep=$row1['ID_Departamento'];
+              $Departamento=$row1['Departamento'];
+
+              echo "<form method='post' action=''>
+
+              <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+              <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+              <input type='submit' name='btn_car' class='txt_direc' value='$Departamento'>
+              </form>";
+
+              if($row1['ID_Departamento']==$ID_Dep1)
+              {
+                  $sql2="SELECT * FROM carrera WHERE ID_Departamento='$ID_Dep1'";
+                $consulta2=mysql_query($sql2);
+
+                while ($row2=mysql_fetch_array($consulta2)) {
+          
+          $ID_Carrera=$row2['ID_Carrera'];
+                $Carrera=$row2['nombre_carrera'];
+              
+                echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                <input type='submit' name='btn_nivel' class='txt_direc' value='$Carrera'>
+                </form>";
+
+                if($row2['ID_Carrera']==$ID_C)
+                {
+                        $sql3="SELECT DISTINCT Nivel_Materia FROM materia WHERE ID_Carrera='$ID_C' ORDER BY Nivel_Materia ASC";
+                      $consulta3=mysql_query($sql3);
+
+                while ($row3=mysql_fetch_array($consulta3)) {
+                    
+                    $Nivel=$row3['Nivel_Materia'];
+                    
+              
+                  echo "<form method='post' action=''>
+                <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                <input type='text' name='Nivel' value='$Nivel' class='txt_invi'>
+
+                <input type='submit' name='btn_Mat' class='txt_direc' value='$Nivel'>
+                </form>";
+
+                  if($Nivel_S==$row3['Nivel_Materia'])
+                  {
+                    
+                    $sql4="SELECT * FROM materia WHERE ID_Carrera='$ID_C' 
+                           AND Nivel_Materia='$Nivel_S' ORDER BY Grupo ASC";
+                      $consulta4=mysql_query($sql4);
+
+                      while ($row4=mysql_fetch_array($consulta4)) {
+                        $ID_Materia=$row4['ID_Materia'];
+                        $Nombre_Materia=$row4['Nombre_Materia'];
+                        $Grupo=$row4['Grupo'];
+
+                        echo "<form method='post' action=''>
+
+                  <input type='text' name='ID_Facultad' value='$ID_F' class='txt_invi'>
+                  <input type='text' name='ID_Departamento' value='$ID_Dep' class='txt_invi'>
+                  <input type='text' name='ID_Carrera' value='$ID_Carrera' class='txt_invi'>
+                  <input type='text' name='Nivel' value='$Nivel' class='txt_invi'>
+
+                  <input type='text' name='txt_ID_M' value='$ID_Materia' class='txt_invi'>
+
+                 <input type='submit' name='btn_Examinar' class='txt_direc' value='$Nombre_Materia - Grupo - $Grupo'></br>";
+                
+                  }
+                 }
+                }
+               }
+             }
+            } 
+          }
+       }
+     }
+    }
 
     //BOTON SELECCION PARA CREAR MATERIA
     if(isset($_POST['btn_Crear_Materia']))
@@ -328,38 +619,28 @@
          function listar_materias()
          {
           require("coneccion.php");
-          
+          echo "<p id='espacio'>a</p>";
+              $query="SELECT * FROM materia m,carrera c WHERE m.ID_Carrera=c.ID_Carrera
+                      ORDER BY m.Nivel_Materia ASC";
+              
+              $resultado=mysql_query($query,$link);
+              echo "<table class='tabla_lista'>";
 
-          $query="SELECT * FROM materia m,carrera c,departamento d WHERE m.ID_Carrera=c.ID_Carrera AND
-           m.ID_Departamento=d.ID_Departamento ORDER BY m.Nivel_Materia ASC";
-          
-          $resultado=mysql_query($query,$link);
-          echo "";
+              while($row=mysql_fetch_array($resultado))
+              {
+                  echo "<form method='post' action='Crear_Materia2.php'> 
 
-          while($row=mysql_fetch_array($resultado))
-          {
-              echo "<form method='post' action=''> <table class='tabla_100'>
-                      <tr><td class='td_tabla'>Materia</td><td colspan='7'>".$row['Nombre_Materia']."</td></tr>
-                      <tr><td class='td_tabla''>Codigo</td><td>".$row['Codigo']."</td>
-                      <td>Grupo</td><td>".$row['Grupo']."</td>
-                      <td>Nivel</td> <td>".$row['Nivel_Materia']."</td>
-                      <td>Carga Horaria</td><td>".$row['Carga_Horaria']." hrs/mes</td></tr>
-                      <tr><td class='td_tabla'>Materias Relacionadas</td><td colspan='7'>
-                      ".$row['Materias_Relacionadas']."</td></tr>
-                
-                      <tr><td class='td_tabla'>Carrera</td><td colspan='7'>".$row['nombre_carrera']."</td></tr>
-
-                      <tr><td class='td_tabla' >Departamento</td><td colspan='7'>
-                      ".$row['Departamento']."</td></tr>
-                    
-                     <tr><td id='td_caract'> <input type='submit' class='btn_editar' value='Editar' name='btn_Editar_M'></td>
-                     <td colspan='7'> <input type='submit' class='btn_eliminar'value='Eliminar' name='btn_Eliminar_M'>
-                     <input type='text' value='".$row['ID_Materia']."' name='txt_ID_M' style='visibility:hidden'>
-                      </td></tr>
-                     </form> </table><p id='espacio'>a</p>";
-          }
-
-         echo "<p id='espacio'>a</p>";
+                          <tr><td class='td_materia'>".$row['Nombre_Materia']."</td>
+                          <td class='td_sub_materia'>".$row['Codigo']."</td>
+                          <td class='td_sub_materia'>".$row['Grupo']."</td>
+                          <td class='td_sub_materia'>".$row['nombre_carrera']."</td>
+            
+                          <td class='td_sub_materia'><input type='text' value='".$row['ID_Materia']."' name='txt_ID_M' style='visibility:hidden; width:1px;'> <input type='submit' class='btn_examinar_pg' value='Examinar' name='btn_Examinar'></td>
+                          
+                          </td></tr>
+                         </form> ";
+               }   
+              echo "</table>";  
          
 
         }
@@ -400,41 +681,45 @@
 
          if(isset($_POST['btn_Ver_Listado_Materias']))
          {
-           
-        echo 
-        '<table id="tabla_Buscador">
-         <tr><td> 
-         <button onclick="procesar()" id="procesar" class="btn_rec" ';     
-        echo 
-         '</button></td><td>
-          <form method="post">
-          <input type="text" class="Txt_Buscar" size="85" id="texto" name="txt_buscar_pg" placeholder="Escriba el nombre del materia que desee buscar">
-          <input type="submit" class="btn_Buscar" name="btn_Buscar_Materias" value="Buscar"></form>
-          </td></tr></table>';
+            echo 
+            '<table class="tabla_Buscador">
+             <tr><td class="btn_mic"> 
+             <button onclick="procesar()" id="procesar" class="btn_rec" ';     
+            echo 
+             '</button></td><td>
+              <form method="post" action="Crear_Materia2.php">
+              <input type="text" class="txt_Buscador" size="70" id="texto" name="txt_buscar_pg" placeholder="Escriba el nombre del materia que desee buscar"></td><td class="td_btn_buscar">
+              <input type="submit" class="btn_buscar" name="btn_Buscar_Materias" value="Buscar"></form>
+              </td></tr></table>';
 
-        echo "<h4 class='etiqueta_h3'>Lista de las Materias Creadas</h4>";
-        echo "<h5> (*) Presione el link de examninar para obtener mas informacion de la materia</h5>";
+            echo "<h4 class='etiqueta_h3'>Lista de las Materias Creadas</h>";
+            echo "<h5> (*) Presione el link de examninar para obtener mas informacion de la materia</h5>
+            <p id='espacio'>a</p>";
 
-          $query="SELECT * FROM materia m,carrera c WHERE m.ID_Carrera=c.ID_Carrera
-                  ORDER BY m.Nivel_Materia ASC";
-          
-          $resultado=mysql_query($query,$link);
+              $query="SELECT * FROM materia m,carrera c WHERE m.ID_Carrera=c.ID_Carrera
+                      ORDER BY m.Nivel_Materia ASC";
+              
+              $resultado=mysql_query($query,$link);
+              echo "<table class='tabla_lista'>";
 
-          while($row=mysql_fetch_array($resultado))
-          {
-              echo "<form method='post' action=''> <table class='tabla_listar_materias'>
+              while($row=mysql_fetch_array($resultado))
+              {
+                  echo "<form method='post' action='Crear_Materia2.php'> 
 
-                      <tr><td>".$row['Nombre_Materia']."</td>
-                      <td>".$row['Codigo']."</td>
-                      <td>".$row['Grupo']."</td>
-                      <td>".$row['nombre_carrera']."</td>
-        
-                      <td id='td_caract'> <input type='submit' class='btn_examinar' value='Examinar' name='btn_Examinar'></td>
-                      <input type='text' value='".$row['ID_Materia']."' name='txt_ID_M' style='visibility:hidden'>
-                      </td></tr>
-                     </form> </table>";
-          }
+                          <tr><td class='td_materia'>".$row['Nombre_Materia']."</td>
+                          <td class='td_sub_materia'>".$row['Codigo']."</td>
+                          <td class='td_sub_materia'>".$row['Grupo']."</td>
+                          <td class='td_sub_materia'>".$row['nombre_carrera']."</td>
+            
+                          <td class='td_sub_materia'><input type='text' value='".$row['ID_Materia']."' name='txt_ID_M' style='visibility:hidden; width:1px;'> <input type='submit' class='btn_examinar_pg' value='Examinar' name='btn_Examinar'></td>
+                          
+                          </td></tr>
+                         </form> ";
 
+               }   
+              echo "</table>";   
+            
+          echo "<p id='espacio'>a</p>";
          }
          
          
@@ -442,10 +727,10 @@
       {
          $ID_Materia=$_POST['txt_ID_M'];
          
-         mostrar_buscador_solo();
+         //mostrar_buscador_solo();
 
         echo "<h3>Materia a detalle </h3>";
-        echo "<h5> (*) Presione los botones de Editar para realizar cambios de datos y Eliminar pra borra la materia</h5></p>";
+        echo "<h5> (*) Presione los botones de Editar para realizar cambios de datos y Eliminar pra borra la materia</h5><p id='espacio'>a</p>";
 
           $query="SELECT * FROM materia m,carrera c, departamento d WHERE m.ID_Departamento=d.ID_Departamento AND m.ID_Carrera=c.ID_Carrera AND m.ID_Materia='$ID_Materia';";
           
@@ -748,17 +1033,194 @@
       
       if(isset($_POST['btn_Crear_Departamentos']))
       {
-        echo "<form method='post' action=''></p>
+        echo "<p id='espacio'>a</p><form method='post' action=''></p>
              
-
               <table class='tabla_100'>
 
-              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Departamento de Materias</H4>
+              <tr><td class='td_tabla' colspan='3'> <H4> Creacion de sectores del organigrama de la universidad </H4>
+              <h5>(*) Se recomienda que llene cada campo asignado</h5></td></tr>
+
+              <tr>
+              <td><center><input type='submit' class='btn_Crear_pg' value='Crear Nuevo Facultad' name='btn_Crear_Facultad'>
+              </center></td></tr>
+
+               <tr>
+              <td><center><input type='submit' class='btn_Crear_pg' value='Crear Nuevo Departamento' name='btn_Crear_D'>
+              </center></td></tr>
+              
+              <tr>
+              <td><center><input type='submit' class='btn_Crear_pg' value='Crear Nueva Carrera' name='btn_Crear_Carrera'>
+              </center></td></tr>
+
+
+               </table></form><p id='espacio'>a</p>";
+
+      }
+   
+
+     //boton crear facultad
+
+      if(isset($_POST['btn_Crear_Facultad']))
+      {  
+
+            echo "<p id='espacio'>a</p><form method='post' action=''></p>
+             
+              <table class='tabla_100'>
+
+              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Facultades </H4>
+              <h5>(*) Se recomienda que llene el cada asignado</h5></td></tr>
+              <tr><td class='td_tabla'> Departamento </td><td><input type='text' size='40' name='txt_Nuevo_F' placeholder='Escriba el nuevo departamento'></td>
+              <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_F'></td>
+
+               </td></tr></table></form><p id='espacio'>a</p>";
+
+              echo "<form method='post'><center><input type='submit' class='btn_examinar_pg' value='volver' name='btn_Crear_Departamentos' ></center></form>";
+            
+             echo "<p id='espacio'>a</p><table class='tabla_100'>";
+
+               require("coneccion.php");
+               $sql="SELECT * FROM Facultad";
+               $resultado=mysql_query($sql);
+               while($row=mysql_fetch_array($resultado))
+               {
+                echo "<form method='post' action=''>
+                <tr><td><input type='text' value='".$row['Facultad']."' size='70' class='text_llenado' name='txt_Facultad'> 
+                <input type='text' value='".$row['ID_Facultad']."' name='ID_Facultad' style='visibility:hidden; width:1px;'> </td>";
+                echo "<td> <input type='submit' value='Editar' name='btn_Editar_F' class='btn_editar'></br>
+                <input type='submit' name='btn_Eliminar_F' value='Eliminar' class='btn_eliminar'></td></tr>
+               </form>";
+               }  
+         echo "</table><p id='espacio'>a</p>";
+
+      }
+
+
+      if(isset($_POST['btn_Insertar_F']))
+      { 
+        $txt_Nuevo_Dep=$_POST['txt_Nuevo_F'];
+
+        if($txt_Nuevo_Dep!='')
+        {
+         
+          $sql="INSERT INTO `Facultad` (`ID_Facultad`, `Facultad`) VALUES (NULL, '$txt_Nuevo_Dep')";
+          $resultado=mysql_query($sql);
+
+          echo "<p class='mensaje_crear'>Se ingreso correctamente la nueva Facultad</p>";
+          mostrar_facultades();
+        }
+       
+        else
+        {
+        
+          echo "<p class='mensaje_correcto'>Se recomienda llenar el campo de la nueva facultad</p>";
+          mostrar_facultades();
+        }
+      }
+
+     
+     //funcion mostrar facultades
+       function mostrar_facultades(){
+          
+          echo "<p id='espacio'>a</p><form method='post' action=''></p>
+             
+              <table class='tabla_100'>
+
+              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Facultades </H4>
+              <h5>(*) Se recomienda que llene cada campo asignado</h5></td></tr>
+              <tr><td class='td_tabla'> Departamento </td><td><input type='text' size='40' name='txt_Nuevo_F' placeholder='Escriba el nuevo departamento'></td>
+              <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_F'></td>
+
+               </td></tr></table></form><p id='espacio'>a</p>";
+
+              echo "<form method='post'><center><input type='submit' class='btn_examinar_pg' value='volver' name='btn_Crear_Departamentos' ></center></form>";
+            
+             echo "<p id='espacio'>a</p><table class='tabla_100'>";
+
+               require("coneccion.php");
+               $sql="SELECT * FROM Facultad";
+               $resultado=mysql_query($sql);
+               while($row=mysql_fetch_array($resultado))
+               {
+                echo "<form method='post' action=''>
+                <tr><td><input type='text' value='".$row['Facultad']."' size='70' class='text_llenado' name='txt_Facultad'> 
+                <input type='text' value='".$row['ID_Facultad']."' name='ID_Facultad' style='visibility:hidden; width:1px;'> </td>";
+                echo "<td> <input type='submit' value='Editar' name='btn_Editar_F' class='btn_editar'></br>
+                <input type='submit' name='btn_Eliminar_F' value='Eliminar' class='btn_eliminar'></td></tr>
+               </form>";
+               }  
+         echo "</table><p id='espacio'>a</p>";
+
+       }
+
+     //BOTON INSERTAR DEPARTAMENTO A LA BD
+
+      if(isset($_POST['btn_Editar_F']))
+      {
+          $txt_Facultad=$_POST['txt_Facultad'];
+          $ID_Facultad=$_POST['ID_Facultad'];
+
+        if($txt_Facultad=="")
+        {
+          echo "<p class='mensaje_correcto'> Se recomienda no ingresar datos vacios a la facultad</p>";
+          mostrar_facultades();
+        }
+
+        if($txt_Facultad!="")
+        {
+        
+          $sql="UPDATE `facultad` SET `Facultad` = '$txt_Facultad' 
+          WHERE `facultad`.`ID_Facultad` = '$ID_Facultad'";
+          $resultado=mysql_query($sql);
+
+          echo "<p class='mensaje_crear'> Se edito correctamente la facultad elegida</p>";
+          mostrar_facultades();
+        }
+
+      }
+
+    //BOTON INSERTAR DEPARTAMENTO A LA BD
+
+      if(isset($_POST['btn_Eliminar_F']))
+      {
+          $ID_Facultad=$_POST['ID_Facultad'];
+
+          $sql="DELETE FROM `facultad` WHERE `facultad`.`ID_Facultad` = '$ID_Facultad' ";
+          $resultado=mysql_query($sql);
+          echo "<p class='mensaje_error'>Se elimino correctamente el departamento elegido</p>";
+          mostrar_facultades();
+      }
+
+  // BOTON CREAR DEPARTAMENTO
+      if(isset($_POST['btn_Crear_D']))
+      {
+          echo "<p id='espacio'>a</p><form method='post' action=''></p>
+              <table class='tabla_100'>
+
+              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Departamentos</H4>
               <h5>(*) Se recomienda que llene el campo asignado</h5></td></tr>
-              <tr><td class='td_tabla'> Departamento </td><td><input type='text' size='50' name='txt_Nuevo_Dep' class='text_llenado' placeholder='Escriba el nuevo departamento'></td>
+              <tr><td class='td_tabla'> Departamento </td>
+              <td>
+              <select name='facultad' style='width:80%;'>
+                  <option value='0'>Seleccione la facultad</option>";
+                  $sql="SELECT * FROM facultad";
+                  $resultado=mysql_query($sql);
+
+                  while($row=mysql_fetch_array($resultado))
+                  {
+                    echo "<option value='".$row['ID_Facultad']."'>".$row['Facultad']."</option>";
+                  }
+              
+              echo "</select> 
+             
+          
+              <input type='text' size='47' name='txt_Nuevo_Dep' placeholder='Escriba el nuevo departamento'>
+
+              </td>
               <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_D'></td>
 
                </td></tr></table></form><p id='espacio'>a</p>";
+
+                echo "<form method='post'><center><input type='submit' class='btn_examinar_pg' value='volver' name='btn_Crear_Departamentos' ></center></form><p id='espacio'>a</p>";
 
          echo "<table class='tabla_100'>";
 
@@ -768,7 +1230,7 @@
                while($row=mysql_fetch_array($resultado))
                {
                 echo "<form method='post' action=''>
-                <tr><td class='td_tabla'> Departamento </td><td><input type='text' value='".$row['Departamento']."' size='35' class='text_llenado' name='txt_Dep'> 
+                <tr><td class='td_tabla'> Departamento </td><td><input type='text' value='".$row['Departamento']."' size='35' name='txt_Dep'> 
                 <input type='text' value='".$row['ID_Departamento']."' name='txt_ID_Dep' style='visibility:hidden; width:1px;'> </td>";
                 echo "<td> <input type='submit' value='Editar' name='btn_Editar_D' class='btn_editar'></td>
                 <td><input type='submit' name='btn_Eliminar_D' value='Eliminar' class='btn_eliminar'></td></tr>
@@ -777,22 +1239,38 @@
          echo "</table>";   
 
       }
+
       function mostrar_depa()
       {
         require("coneccion.php");
-          echo "<form method='post' action=''></p>
-             
-
+         echo "<p id='espacio'>a</p><form method='post' action=''></p>
               <table class='tabla_100'>
 
-              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Departamento de Materias</H4>
+              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Departamentos</H4>
               <h5>(*) Se recomienda que llene el campo asignado</h5></td></tr>
-              <tr><td class='td_tabla'> Departamento </td><td><input type='text' size='40' name='txt_Nuevo_Dep' placeholder='Escriba el nuevo departamento'></td>
-              <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_D'></td>
+              <tr><td class='td_tabla'> Departamento </td>
+              <td>
+              <select name='facultad' style='width:80%;'>
+                  <option value='0'>Seleccione la facultad</option>";
+                  $sql="SELECT * FROM facultad";
+                  $resultado=mysql_query($sql);
 
-               </td></tr></table></form><p id='espacio'>a</p>";
+                  while($row=mysql_fetch_array($resultado))
+                  {
+                    echo "<option value='".$row['ID_Facultad']."'>".$row['Facultad']."</option>";
+                  }
+              
+                echo "</select> 
+                <input type='text' size='47' name='txt_Nuevo_Dep' placeholder='Escriba el nuevo departamento'>
 
-         echo "<table class='tabla_100'>";
+                </td>
+                <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_D'></td>
+
+                </td></tr></table></form><p id='espacio'>a</p>";
+
+                echo "<form method='post'><center><input type='submit' class='btn_examinar_pg' value='volver' name='btn_Crear_Departamentos' ></center></form> <p id='espacio'>a</p>";
+
+                echo "<table class='tabla_100'>";
 
                require("coneccion.php");
                $sql="SELECT * FROM departamento";
@@ -814,36 +1292,40 @@
 
       if(isset($_POST['btn_Insertar_D']))
       { 
-        $txt_Nuevo_Dep=$_POST['txt_Nuevo_Dep'];
+         $txt_Nuevo_F=$_POST['txt_Nuevo_Dep'];
+         $facultad=$_POST['facultad'];
 
-        if($txt_Nuevo_Dep=="")
+        if($txt_Nuevo_F!='' && $facultad>0)
+        {
+            for ($i=0; $i <count($facultad) ; $i++) { 
+              $ID_Facultad=$facultad[$i];
+            }
+          $sql="INSERT INTO `departamento` (ID_Departamento, Departamento,ID_Facultad) 
+                VALUES (NULL, '$txt_Nuevo_F','$ID_Facultad')";
+          $resultado=mysql_query($sql);
+
+          echo "<p class='mensaje_crear'>Se ingreso correctamente la nuva Facultad</p>";
+          mostrar_depa();
+        }
+
+        else
         {
           echo "<p class='mensaje_correcto'>Se recomienda llenar el campo de nuevo departamento</p>";
           mostrar_depa();
         }
 
-        if($txt_Nuevo_Dep!='')
-        {
-        
-          $sql="INSERT INTO `departamento` (`ID_Departamento`, `Departamento`) VALUES (NULL, '$txt_Nuevo_Dep')";
-          $resultado=mysql_query($sql);
-
-          echo "<p class='mensaje_crear'>Se ingreso correctamente el nuevo departamento</p>";
-          mostrar_depa();
-        }
-
       }
 
-     //BOTON INSERTAR DEPARTAMENTO A LA BD
+      //BOTON INSERTAR DEPARTAMENTO A LA BD
 
       if(isset($_POST['btn_Editar_D']))
       {
-         $txt_Dep=$_POST['txt_Dep'];
-         $ID_Dep=$_POST['txt_ID_Dep'];
+          $txt_Dep=$_POST['txt_Dep'];
+          $ID_Departamento=$_POST['txt_ID_Dep'];
 
         if($txt_Dep=="")
         {
-          echo "<p class='mensaje_correcto'>Se recomienda no ingresar datos vacios al departamento</p>";
+          echo "<p class='mensaje_correcto'> Se recomienda no ingresar datos vacios al departamento</p>";
           mostrar_depa();
         }
 
@@ -851,10 +1333,10 @@
         {
         
           $sql="UPDATE `departamento` SET `Departamento` = '$txt_Dep' 
-          WHERE `departamento`.`ID_Departamento` = '$ID_Dep'";
+          WHERE `departamento`.`ID_Departamento` = '$ID_Departamento'";
           $resultado=mysql_query($sql);
 
-          echo "<p class='mensaje_crear'>Se edito correctamente el departamento elegido</p>";
+          echo "<p class='mensaje_crear'> Se edito correctamente el departamento elegido</p>";
           mostrar_depa();
         }
 
@@ -864,12 +1346,194 @@
 
       if(isset($_POST['btn_Eliminar_D']))
       {
-          $ID_Dep=$_POST['txt_ID_Dep'];
+          $ID_Departamento=$_POST['txt_ID_Dep'];
 
-          $sql="DELETE FROM `departamento` WHERE `departamento`.`ID_Departamento` = '$ID_Dep' ";
+          $sql="DELETE FROM `departamento` WHERE `departamento`.`ID_Departamento` = '$ID_Departamento' ";
           $resultado=mysql_query($sql);
           echo "<p class='mensaje_error'>Se elimino correctamente el departamento elegido</p>";
           mostrar_depa();
+      }
+
+     
+     // CREAR NUEVA CARRERA
+
+      if(isset($_POST['btn_Crear_Carrera']))
+      {
+           echo "<p id='espacio'>a</p><form method='post' action=''></p>
+              <table class='tabla_100'>
+
+              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Carreras segun Departamento</H4>
+              <h5>(*) Se recomienda que llene el campo asignado</h5></td></tr>
+              <tr>
+              <td>";
+              echo '<select name="facultad" class="select_fact">
+                <option value="0">Seleccione la Facultad</option>';
+
+                $sql = "SELECT * FROM facultad ORDER BY Facultad ASC";
+                $qr = mysql_query($sql) or die(mysql_error());
+                while($ln = mysql_fetch_assoc($qr)){
+                    echo '<option value="'.$ln['ID_Facultad'].'">'.$ln['Facultad'].'</option>';
+                }
+               
+                echo '</select><p id="espacio">a</p>
+                
+                 <select name="departamento">
+                  <option value="0">Seleccione el departamento</option>
+                    <option value="1" disabled="disabled">departamentos</option>
+                </select> <p id="espacio">a</p>'; 
+                
+
+                echo "<input type='text' size='47' name='txt_Nuevo_C' placeholder='Escriba la nueva carrera'>
+
+                </td>
+                <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_C'></td>
+
+                </td></tr></table></form><p id='espacio'>a</p>";
+
+                echo "<form method='post'><center><input type='submit' class='btn_examinar_pg' value='volver' name='btn_Crear_Departamentos' ></center></form> <p id='espacio'>a</p>";
+
+                echo "<table class='tabla_100'>";
+
+               
+               $sql="SELECT * FROM carrera";
+               $resultado=mysql_query($sql);
+               while($row=mysql_fetch_array($resultado))
+               {
+                echo "<form method='post' action=''>
+                <tr><td class='td_tabla'> Carrera </td><td><input type='text' value='".$row['nombre_carrera']."' size='35' name='txt_Carrera'> 
+                <input type='text' value='".$row['ID_Carrera']."' name='ID_Carrera' style='visibility:hidden; width:1px;'> </td>";
+                echo "<td> <input type='submit' value='Editar' name='btn_Editar_C' class='btn_editar'></td>
+                <td><input type='submit' name='btn_Eliminar_C' value='Eliminar' class='btn_eliminar'></td></tr>
+               </form>";
+               }  
+         echo "</table>";   
+
+      }
+
+      function mostrar_carre(){
+        require("coneccion.php");
+        echo "<p id='espacio'>a</p><form method='post' action=''></p>
+              <table class='tabla_100'>
+
+              <tr><td class='td_tabla' colspan='3'> <H4>Creacion de Carreras segun Departamento</H4>
+              <h5>(*) Se recomienda que llene el campo asignado</h5></td></tr>
+              <tr>
+              <td>";
+              echo '<select name="facultad" class="select_fact">
+                <option value="0">Seleccione la Facultad</option>';
+
+                $sql = "SELECT * FROM facultad ORDER BY Facultad ASC";
+                $qr = mysql_query($sql) or die(mysql_error());
+                while($ln = mysql_fetch_assoc($qr)){
+                    echo '<option value="'.$ln['ID_Facultad'].'">'.$ln['Facultad'].'</option>';
+                }
+               
+                echo '</select><p id="espacio">a</p>
+                
+                 <select name="departamento">
+                  <option value="0">Seleccione el departamento</option>
+                    <option value="1" disabled="disabled">departamentos</option>
+                </select> <p id="espacio">a</p>'; 
+                
+
+                echo "<input type='text' size='47' name='txt_Nuevo_C' placeholder='Escriba la nueva carrera'>
+
+                </td>
+                <td><input type='submit' class='btn_Crear' value='Crear Nuevo' name='btn_Insertar_C'></td>
+
+                </td></tr></table></form><p id='espacio'>a</p>";
+
+                echo "<form method='post'><center><input type='submit' class='btn_examinar_pg' value='volver' name='btn_Crear_Departamentos' ></center></form> <p id='espacio'>a</p>";
+
+                echo "<table class='tabla_100'>";
+
+               
+               $sql="SELECT * FROM carrera";
+               $resultado=mysql_query($sql);
+               while($row=mysql_fetch_array($resultado))
+               {
+                echo "<form method='post' action=''>
+                <tr><td class='td_tabla'> Carrera </td><td><input type='text' value='".$row['nombre_carrera']."' size='35' name='txt_Carrera'> 
+                <input type='text' value='".$row['ID_Carrera']."' name='ID_Carrera' style='visibility:hidden; width:1px;'> </td>";
+                echo "<td> <input type='submit' value='Editar' name='btn_Editar_C' class='btn_editar'></td>
+                <td><input type='submit' name='btn_Eliminar_C' value='Eliminar' class='btn_eliminar'></td></tr>
+               </form>";
+               }  
+         echo "</table>";   
+
+
+      }
+
+
+      //CREAR NUEVA CARRERA
+
+      if(isset($_POST['btn_Insertar_C']))
+      {
+           $txt_Nuevo_C=$_POST['txt_Nuevo_C'];
+           $Seleccion_F=$_POST['facultad'];
+           $Seleccion_D=$_POST['departamento'];
+
+        if($Seleccion_F>0 && $Seleccion_D>0 && $txt_Nuevo_C!=""){
+
+          for ($i=0;$i<count($Seleccion_F);$i++) 
+              {  $ID_Facultad=$Seleccion_F[$i];} 
+
+          for ($i=0;$i<count($Seleccion_D);$i++) 
+              {  $ID_Departamento=$Seleccion_D[$i];}
+
+          $sql="INSERT INTO `carrera` (ID_Carrera, nombre_carrera,ID_Departamento) 
+                VALUES (NULL, '$txt_Nuevo_C','$ID_Departamento')";
+          $resultado=mysql_query($sql);
+
+          echo "<p class='mensaje_crear'>Se ingreso correctamente la nueva Carrera</p>";
+          mostrar_carre();
+
+        
+
+        }
+        else{
+           echo "<p class='mensaje_correcto'>Se recomienda seleccionar todas las opciones</p>";
+           mostrar_carre();
+        }
+
+      }
+      //Editar Carrera
+      if(isset($_POST['btn_Editar_C']))
+      {   $txt_Carrera=$_POST['txt_Carrera'];
+          $ID_Carrera=$_POST['ID_Carrera'];
+
+
+        if($txt_Carrera=="")
+        {
+          echo "<p class='mensaje_correcto'> Se recomienda no ingresar datos vacios para crear carrera</p>";
+          mostrar_carre();
+        }
+
+        if($txt_Carrera!='')
+        {
+        
+          $sql="UPDATE `carrera` SET `nombre_carrera` = '$txt_Carrera' 
+          WHERE `carrera`.`ID_Carrera` = '$ID_Carrera'";
+          $resultado=mysql_query($sql);
+
+          echo "<p class='mensaje_crear'> Se edito correctamente la carrera elegida</p>";
+           mostrar_carre();
+        }
+
+
+      }
+      
+      //Eliminar Carrera
+      if(isset($_POST['btn_Eliminar_C']))
+      { 
+         $ID_Carrera=$_POST['ID_Carrera'];
+
+          $sql="DELETE FROM `carrera`  
+          WHERE `carrera`.`ID_Carrera` = '$ID_Carrera'";
+          $resultado=mysql_query($sql);
+
+          echo "<p class='mensaje_error'> Se elimino correctamente la carrera</p>";
+           mostrar_carre();
       }
 
 
@@ -877,18 +1541,20 @@
 
         if(isset($_POST['btn_Buscar_Materias'])){
         $Text_a_Buscar=$_POST['txt_buscar_pg'];
-        mostrar_buscador_solo();
+        //mostrar_buscador_solo();
+
         echo "<p id='espacio'>a</p><h4>Resultados de Buscar Materia </h4>";
         echo "<h5> (*) Presione los botones de Editar para realizar cambios de datos y Eliminar pra borra la materia</h5></p>";
 
-          $query="SELECT * FROM materia m,carrera c WHERE m.ID_Carrera=c.ID_Carrera AND m.Nombre_Materia LIKE '%$Text_a_Buscar%'
+        if($Text_a_Buscar!="")
+        {
+             $query="SELECT * FROM materia m,carrera c WHERE m.ID_Carrera=c.ID_Carrera AND m.Nombre_Materia LIKE '%$Text_a_Buscar%'
                   ORDER BY m.Nivel_Materia ASC";
           
           $resultado=mysql_query($query,$link);
-          echo "";
-
+          $cont=0;
           while($row=mysql_fetch_array($resultado))
-          {
+          {   $cont++;
               echo "<form method='post' action=''> <table class='tabla_100'><p id='espacio'>a</p>
                       <tr><td class='td_tabla'>Materia</td><td colspan='7'>".$row['Nombre_Materia']."</td></tr>
                       <tr><td class='td_tabla'>Codigo</td><td>".$row['Codigo']."</td>
@@ -906,7 +1572,18 @@
                      </form> </table></p>";
           }
 
-         echo "<p></p>";
+          if($cont==0)
+          {
+             echo "<p class='mensaje_correcto'>No se encontraron materias relacionadas</p>";
+          }
+
+        }
+        else{
+         
+          echo "<p class='mensaje_correcto'> Debes escribir algun dato para realizar la busqueda</p>";
+
+        }
+
         }
 
 

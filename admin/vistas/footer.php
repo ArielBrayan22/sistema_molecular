@@ -1,5 +1,5 @@
  <article id='usuario'>
-   <p></p>  
+  
    <center><table id="tabla_user">
       <?php
            require ("coneccion.php");
@@ -29,6 +29,7 @@
 
 <article id="footer">
 <hr></hr>
+<p id='espacio'>a</p>
  <center>
 
  <h4 id="titulo_footer">Paginas Amigas</h4> </center>

@@ -237,6 +237,25 @@ td#td_titulo_bus{
 	text-decoration:underline;
 }
 
+/* ESTILOS DE BUSQUEDA ACORDEOON*/
+.txt_invi{
+     
+     width: 0px;
+     visibility: hidden;
+	}
+	
+
+	.txt_direc{
+      border: none;
+      color: #154360;
+      background: white;
+       font-size:15px;
+      font-size-adjust: all;
+      margin: 0px;
+      padding: 0.5%;
+	}
+
+
 
 @media screen and (max-width: 800px) {
 
